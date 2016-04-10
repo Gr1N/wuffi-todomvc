@@ -2,8 +2,8 @@
 
 from wuffi.core.urls import UrlDispatcher
 
-from apps.todo.views import todo
+from apps.todo import views
 
 
 router = UrlDispatcher()
-router.add_route('GET', '/', todo)
+router.add_route('*', '/{id}', views.TodoView)

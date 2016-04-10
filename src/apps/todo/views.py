@@ -1,11 +1,18 @@
 # -*- coding: utf-8 -*-
 
-from aiohttp import web
+from wuffi.views.generic import RetrieveView
+
+from apps.todo import tables
 
 __all__ = (
-    'todo',
+    'TodoView',
 )
 
 
-async def todo(request):
-    return web.Response(body=b'todo')
+class TodoView(RetrieveView):
+    select = (
+        tables.item,
+    )
+
+    def get_where(self):
+        return tables.item.c.id == self.request.match_info['id']
