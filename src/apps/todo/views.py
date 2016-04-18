@@ -11,16 +11,10 @@ __all__ = (
 
 
 class TodosView(ListView):
-    select = (
-        tables.item,
-    )
+    table = tables.item
+
     order_by = tables.item.c.id
 
 
 class TodoView(RetrieveView):
-    select = (
-        tables.item,
-    )
-
-    def get_where(self):
-        return tables.item.c.id == self.request.match_info['id']
+    table = tables.item
