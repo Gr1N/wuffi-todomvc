@@ -19,6 +19,15 @@ class TodosView(ListCreateView):
     validator_class = validation.Validator
     validation_schema = schemas.item
 
+    def get_created_headers(self, obj):
+        location = self.request.app.router['todos:details'].url(parts={
+            'id': obj.id,
+        })
+
+        return {
+            'Location': location,
+        }
+
 
 class TodoView(RetrieveUpdateDestroyView):
     table = tables.item

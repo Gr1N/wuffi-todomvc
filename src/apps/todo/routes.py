@@ -6,5 +6,5 @@ from apps.todo import views
 
 
 router = UrlDispatcher()
-router.add_route('*', '/', views.TodosView)
-router.add_route('*', '/{id}', views.TodoView)
+router.add_route('*', '/', views.TodosView, name='list')
+router.add_route('*', '/{id}', views.TodoView, name='details')

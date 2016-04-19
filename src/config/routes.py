@@ -11,4 +11,4 @@ async def index(request):
 
 router = UrlDispatcher()
 router.add_route('GET', '/', index)
-router.include_routes('/todos', 'apps.todo.routes')
+router.include_routes('/todos', 'apps.todo.routes', namespace='todos')
