@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from wuffi import validation
-from wuffi.views.generic import ListCreateView, RetrieveDestroyView
+from wuffi.views.generic import ListCreateView, RetrieveUpdateDestroyView
 
 from apps.todo import schemas, tables
 
@@ -20,5 +20,8 @@ class TodosView(ListCreateView):
     validation_schema = schemas.item
 
 
-class TodoView(RetrieveDestroyView):
+class TodoView(RetrieveUpdateDestroyView):
     table = tables.item
+
+    validator_class = validation.Validator
+    validation_schema = schemas.item
