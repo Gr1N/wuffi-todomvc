@@ -8,9 +8,10 @@ from aiohttp import web
 from wuffi import get_application
 
 
-if __name__ == '__main__':
-    os.environ.setdefault('WUFFI_SETTINGS_MODULE', 'config.settings.base')
+os.environ.setdefault('WUFFI_SETTINGS_MODULE', 'config.settings.base')
 
+
+if __name__ == '__main__':
     loop = asyncio.get_event_loop()
     app = loop.run_until_complete(get_application(loop=loop))
     web.run_app(app)
